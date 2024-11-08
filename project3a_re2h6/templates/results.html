@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    {%for message in get_flashed_messages()%}
+        <div class="alert">
+            {{ message }}
+        </div>
+        <br>
+    {%endfor%}
+    {% block content %} {% endblock %}
+
+    <nav>
+        <a href="{{ url_for('index') }}">Back to home</a>
+    </nav>
+    <h1>Results</h1>
+    <p>Symbol: {{ symbol }}</p>
+    <p>Chart Type: {{chart_type}}</p>
+    <p>Time Series Function: {{time_series}}</p>
+    <p>Start Date: {{start_date}}</p>
+    <p>End Date: {{end_date}}</p>
+
+    <h2>Stock Chart for {{ symbol }}</h2>
+    {% if chart_path %}
+    <img src="{{ url_for('static', filename=chart_path) }}" alt="Stock Chart for {{ symbol }}" width="800" height="600">
+    {% else %}
+        <p>No chart available.</p>
+    {% endif %}
+    
+</body>
+</html>

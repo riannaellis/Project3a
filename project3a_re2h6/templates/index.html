@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <h1>Stock Data Visualizer</h1>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter Form</title>
+</head>
+<body>
+
+    {%for message in get_flashed_messages()%}
+        <div class="alert">
+            {{ message }}
+        </div>
+        <br>
+    {%endfor%}
+    {% block content %} {% endblock %}
+
+  <form id="myForm" action="{{ url_for('results') }}" method="POST">
+
+    <fieldset id="symbolSelection">
+        <legend>Select Symbol:</legend>
+        <select id="symbols" name="symbol">
+          <option value="">Select a Symbol</option>
+          {% for symbol in symbols_list %}
+            <option value="{{ symbol }}">{{ symbol }}</option>
+          {% endfor %}
+        </select>
+      </fieldset>
+
+    <fieldset id="chartSelection">
+    <legend>Select Chart Type:</legend>
+    <select id="charts" name="chart">
+        <option value="">Select a Chart Type</option>
+        {% for chart in chart_list %}
+        <option value="{{ chart }}">{{ chart }}</option>
+        {% endfor %}
+    </select>
+    </fieldset>
+
+    <fieldset id="timeSeriesSelection">
+        <legend>Select Time Series Function:</legend>
+        <select id="timeSerieses" name="timeSeries">
+          <option value="">Select Time Series Function</option>
+          {% for function in time_series_list %}
+            <option value="{{ function }}">{{ function }}</option>
+          {% endfor %}
+        </select>
+      </fieldset>
+
+    <fieldset id="startDateSelection">
+        <legend>Select a Start Date:</legend>
+        <label for="startdate">Pick a start date:</label>
+        <input type="date" id="startdate" name="startdate">
+    </fieldset>
+
+    <fieldset id="endDateSelection">
+        <legend>Select an End Date:</legend>
+        <label for="enddate">Pick an end date:</label>
+        <input type="date" id="enddate" name="enddate">
+    </fieldset>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
+
+<script>
+
+    const symbolSelection = document.getElementById("symbolSelection");
+    const chartSelection = document.getElementById("chartSelection")
+    const timeSeriesSelection = document.getElementById("timeSeriesSelection");
+    const startDate = document.getElementById("startDateSelection");
+    const endDate = document.getElementById("endDateSelection");
+
+</script>
+
+
